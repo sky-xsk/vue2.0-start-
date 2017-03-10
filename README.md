@@ -1,7 +1,6 @@
-# test_xsk
+# vue2.0-start-
 
-> A Vue.js project
-
+> vue的部分基本用法，新手入门好帮手，后期不断更新
 ## Build Setup
 
 ``` bash
