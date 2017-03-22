@@ -79,7 +79,7 @@
             <button @click="jianplus">-plus</button>
         </p>
    </div>
---> 
+
 
    <div class="vuex">
         <h1>vuex 访问状态对象</h1>
@@ -89,9 +89,10 @@
             <button @click="$store.commit('jian')">-</button>
         </p>
    </div>
-  
+ -->  
+   <bar></bar>
 
-
+   <jsonp></jsonp>
 
   </div>
 </template>
@@ -101,14 +102,18 @@
     import good from './components/good.vue';
     import user from './components/user.vue';
     import Hello from './components/Hello.vue';
+    import bar from './components/bar.vue';
+    import jsonp from './components/jsonp.vue';
     import Vue from 'vue';
-    import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
+   // import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
     export default {
         name: 'app',
         components: {
             good,
             user,
-            Hello
+            Hello,
+            bar,
+            jsonp
         },
        
         data() {
@@ -126,35 +131,33 @@
             }
         },
 
-       
-
         //计算属性
-        computed:{
-             count(){
-                 return this.$store.state.count+1;
-             },
+        // computed:{
+        //      count(){
+        //          return this.$store.state.count+1;
+        //      },
 
-        },
+        // },
 
-        computed:mapState({
-            count:function(state){
-                return state.count+2
-            }
-        }),
+        // computed:mapState({
+        //     count:function(state){
+        //         return state.count+2
+        //     }
+        // }),
 
-        computed:{
-            ...mapState(
-                ["counts"]
-            ),
+        // computed:{
+        //     ...mapState(
+        //         ["counts"]
+        //     ),
 
-            // counts(){
-            //     return this.$store.getters.counts
-            // },
-            ...mapGetters(
-                ["counts"]
-            ),
+        //     // counts(){
+        //     //     return this.$store.getters.counts
+        //     // },
+        //     ...mapGetters(
+        //         ["counts"]
+        //     ),
 
-        },
+        // },
 
         // methods:{
         //     ...mapMutations([

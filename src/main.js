@@ -8,14 +8,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
 import store from 'store'
+import vueresource from 'vue-resource'
 
 Vue.use(Vuex)
 Vue.use(ElementUI)
+Vue.use(vueresource)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store,
+  //store,
   template: '<App/>',
   components: { App }
 })
