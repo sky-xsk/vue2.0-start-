@@ -55,8 +55,9 @@
                 this.t1=this.myData[this.now];
             },
              clickChose($index){
-                this.now = $index
+                this.now = $index;
                 this.t1=this.myData[this.now];
+                window.open('https://www.baidu.com/s?wd='+this.t1);
             },
 
        },
