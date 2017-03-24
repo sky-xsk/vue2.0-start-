@@ -67,6 +67,7 @@
      <input v-on:keyup.enter.shift="submit">
      
      <el-button type="primary">主要按钮</el-button>
+     
     
     <p></p>
    
@@ -94,6 +95,34 @@
 
    <jsonp></jsonp>
 
+   <h2>子组件向父组件传值的小示例</h2>
+
+    <span>我是父组件 <b> {{fu}} </b> 看此处值的变化</span>
+    
+    <props @childmsg="get"></props>
+
+
+    <h2>vue2.0动画的高级探索//运动函数//请看控制台</h2>
+
+    <p><el-button type="primary" @click="shows=!shows">运动按钮</el-button></p>
+    <transition name="fades"
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+     >
+        <div class="diva" v-show="shows" ></div>
+    </transition>
+    
+
+
+
+
+
+
+
   </div>
 </template>
 
@@ -104,6 +133,7 @@
     import Hello from './components/Hello.vue';
     import bar from './components/bar.vue';
     import jsonp from './components/jsonp.vue';
+    import props from './components/props.vue';
     import Vue from 'vue';
    // import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
     export default {
@@ -113,7 +143,8 @@
             user,
             Hello,
             bar,
-            jsonp
+            jsonp,
+            props
         },
        
         data() {
@@ -124,6 +155,9 @@
                 toggle: false,
                 message: 'asdasdas',
                 example0: "",
+                fu:'我是父组件的数据',
+                shows:false,
+
 
                 //
                 //counts:0,
@@ -182,6 +216,31 @@
         },
 
         methods: {
+            //
+             beforeEnter(el){
+                console.log('动画enter之前');
+            },
+            enter(el){
+                console.log('动画enter进入');
+            },
+            afterEnter(el){
+                console.log('动画进入之后');
+                el.style.background='blue';
+            },
+            beforeLeave(el){
+                console.log('动画leave之前');
+            },
+            leave(el){
+                console.log('动画leave');
+            },
+            afterLeave(el){
+                console.log('动画leave之后');
+                el.style.background='red';
+            },
+            //
+            get(msg){
+                this.fu = msg;
+            },
             submit(){
                 alert(0);
             },
@@ -214,6 +273,31 @@
 </script>
 
 <style>
+       .diva{ width: 300px; height: 200px; background: seagreen};
+
+        .fades-enter-active, .fades-leave-active{
+            transition: 1s all ease;
+        }
+
+      .fades-enter-active{
+            opacity:1; 
+            transform: translate3d(0,0 ,0);
+          
+        }
+        .fades-leave-active{
+            opacity:0;
+             transform: translate3d(100px,0,0);
+        }
+         .fades-leave{
+            opacity:0;
+            transform: translate3d(100px,0 ,0);
+           
+        }
+        .fades-enter{
+            opacity:0;
+            transform: translate3d(0,0,0);
+        }
+
     .tests {
         width: 100%;
         margin-top: 300px;
@@ -235,7 +319,7 @@
         display: flex;
     }
     
-    .cont>ul>li {
+    .cont > ul > li {
         float: left;
         flex: 1;
         list-style: none;
