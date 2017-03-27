@@ -67,30 +67,9 @@
      <input v-on:keyup.enter.shift="submit">
      
      <el-button type="primary">主要按钮</el-button>
-     
-    
+
     <p></p>
-   
 
-<!--   <div class="vuex">
-        <h1>vuex 访问状态对象</h1>
-        <p>{{counts}}</p>
-        <p>
-            <button @click="jiaplus">+plus</button> 
-            <button @click="jianplus">-plus</button>
-        </p>
-   </div>
-
-
-   <div class="vuex">
-        <h1>vuex 访问状态对象</h1>
-        <p>{{counts}}</p>
-        <p>
-            <button @click="$store.commit('jia',{a:10})">+</button> 
-            <button @click="$store.commit('jian')">-</button>
-        </p>
-   </div>
- -->  
    <bar></bar>
 
    <jsonp></jsonp>
@@ -117,11 +96,24 @@
     </transition>
     
 
+    <h1>vuex 状态管理</h1>
+        <p>
+            <button>访问状态1：{{$store.state.size}}</button>
+           <!-- 1.<button>访问状态2：{{see}}</button>-->
+            2.<button>访问状态2：{{sizes}}</button>
+        </p> 
+        <p>
+            <p>载荷，说白了就是传的一个参数,payload是一个对象；</p>
+            <button @click="$store.commit('jia', {n:10})">增加+</button>
+            <button @click="jian">减少- </button>
+        </p>
 
 
-
-
-
+          <p>
+            <button @click="jiaplus">+plus</button> 
+            <button @click="jianplus">-plus</button>
+         </p>
+       <hr />  
 
   </div>
 </template>
@@ -135,7 +127,7 @@
     import jsonp from './components/jsonp.vue';
     import props from './components/props.vue';
     import Vue from 'vue';
-   // import {mapState,mapGetters,mapMutations,mapActions} from 'vuex';
+    import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
         name: 'app',
         components: {
@@ -157,56 +149,31 @@
                 example0: "",
                 fu:'我是父组件的数据',
                 shows:false,
+                see:0,
 
-
-                //
-                //counts:0,
-                //
             }
         },
 
-        //计算属性
-        // computed:{
-        //      count(){
-        //          return this.$store.state.count+1;
-        //      },
+        computed:{
+            //vuex
+            //第一种方法；
+            // see(){
+            //      return this.$store.state.sizes;
+            // },
+            //第二种方法,推荐此种方法
+            ...mapState(['sizes']),
+          
+            //第一种方法；
+            // sizes(){
+            //     return this.$store.getters.sizes;
+            // },
+            //第二种方法,推荐此种方法
+            ...mapGetters(['sizes']),//注意默认的值
 
-        // },
-
-        // computed:mapState({
-        //     count:function(state){
-        //         return state.count+2
-        //     }
-        // }),
-
-        // computed:{
-        //     ...mapState(
-        //         ["counts"]
-        //     ),
-
-        //     // counts(){
-        //     //     return this.$store.getters.counts
-        //     // },
-        //     ...mapGetters(
-        //         ["counts"]
-        //     ),
-
-        // },
-
-        // methods:{
-        //     ...mapMutations([
-        //         'jia',
-        //         'jian'
-        //     ]),
-        //     ...mapActions([
-        //         'jiaplus',
-        //         'jianplus',
-        //     ])
-        // },
-
+        },
+   
         mounted() {
             this.tests(); 
-        
         },
         //数据监测
         watch: {　　　　　　　　
@@ -214,8 +181,11 @@
                 console.log(curVal, oldVal);　　　　　　　　
             },
         },
-
         methods: {
+            //注意mapMutations的引入方式
+            ...mapMutations(['jian','jia']), 
+            //结合设置的数据，注意数字的变化
+            ...mapActions(['jiaplus','jianplus']),
             //
              beforeEnter(el){
                 console.log('动画enter之前');
