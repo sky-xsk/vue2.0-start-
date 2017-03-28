@@ -6,18 +6,20 @@ import ElementUI from 'element-ui'
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
+import alerts from './components/alerts/alerts'
 import router from './router'
 import store from 'store'
 import vueresource from 'vue-resource'
 
-Vue.use(Vuex)
-Vue.use(ElementUI)
-Vue.use(vueresource)
-/* eslint-disable no-new */
+Vue.use(Vuex);
+Vue.use(ElementUI);
+Vue.use(vueresource);
+Vue.use(alerts);
+      
 new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App }
 })

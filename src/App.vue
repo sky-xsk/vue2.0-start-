@@ -99,7 +99,7 @@
     <h1>vuex 状态管理</h1>
         <p>
             <button>访问状态1：{{$store.state.size}}</button>
-           <!-- 1.<button>访问状态2：{{see}}</button>-->
+            <!-- 1.<button>访问状态2：{{see}}</button>-->
             2.<button>访问状态2：{{sizes}}</button>
         </p> 
         <p>
@@ -108,13 +108,22 @@
             <button @click="jian">减少- </button>
         </p>
 
-
           <p>
             <button @click="jiaplus">+plus</button> 
             <button @click="jianplus">-plus</button>
          </p>
        <hr />  
 
+
+     <p>此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
+        这个组件我并没有在components里注册；
+     </p>  
+
+     <alerts></alerts>
+
+     <hr />
+
+     
   </div>
 </template>
 
@@ -180,6 +189,13 @@
             example0(curVal, oldVal) {　　　　
                 console.log(curVal, oldVal);　　　　　　　　
             },
+
+            //监测路由的变化，平时也会用到
+            $route(from,to){
+                console.log(from.path);
+                console.log(to.path);
+            }
+
         },
         methods: {
             //注意mapMutations的引入方式

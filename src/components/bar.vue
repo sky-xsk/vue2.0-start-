@@ -21,6 +21,10 @@
          <input type="text" v-model="btnText">
       </p>
 
+      <hr />
+
+      <alerts></alerts>
+
   </div>
 </template>
 
