@@ -90,8 +90,7 @@
             @after-enter="afterEnter"
             @before-leave="beforeLeave"
             @leave="leave"
-            @after-leave="afterLeave"
-     >
+            @after-leave="afterLeave">
         <div class="diva" v-show="shows" ></div>
     </transition>
     
@@ -120,10 +119,17 @@
      </p>  
 
      <alerts></alerts>
-
+     <alerts></alerts>
+      
      <hr />
 
-     
+     <h2>$parent</h2>
+     <button @click="parents()">点击我$parent</button>
+     <parent></parent>
+
+    
+
+
   </div>
 </template>
 
@@ -135,6 +141,7 @@
     import bar from './components/bar.vue';
     import jsonp from './components/jsonp.vue';
     import props from './components/props.vue';
+    import parent from './components/parent.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -145,7 +152,8 @@
             Hello,
             bar,
             jsonp,
-            props
+            props,
+            parent
         },
        
         data() {
@@ -184,6 +192,10 @@
         mounted() {
             this.tests(); 
         },
+
+
+        
+
         //数据监测
         watch: {　　　　　　　　
             example0(curVal, oldVal) {　　　　
@@ -198,6 +210,12 @@
 
         },
         methods: {
+           
+            //
+            parents(){
+                alert("parent")
+            },
+
             //注意mapMutations的引入方式
             ...mapMutations(['jian','jia']), 
             //结合设置的数据，注意数字的变化
@@ -223,6 +241,7 @@
                 console.log('动画leave之后');
                 el.style.background='red';
             },
+        
             //
             get(msg){
                 this.fu = msg;
