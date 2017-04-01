@@ -38,9 +38,7 @@
                 this.$parent.parents();
             },
 
-            chidrens(){
-                alert("我是子组件里的方法");
-            },
+           
 
         },
     }

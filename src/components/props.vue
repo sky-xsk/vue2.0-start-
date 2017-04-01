@@ -11,7 +11,7 @@
     export default {
         data() {
             return {
-               zi:"我是子组件的数据", 
+               zi:"我是props子组件的数据", 
             }
         },
          methods:{

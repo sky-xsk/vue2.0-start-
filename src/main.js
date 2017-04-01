@@ -15,6 +15,7 @@ Vue.use(Vuex);
 Vue.use(ElementUI);
 Vue.use(vueresource);
 Vue.use(alerts);
+
       
 new Vue({
     el: '#app',

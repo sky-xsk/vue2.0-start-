@@ -5,6 +5,7 @@ Vue.use(Vuex)
 const state = { //访问状态对象
     size: 100,
     sizes: 200,
+    testshow:false,
 }
 
 const mutations = { //触发状态 同步
@@ -14,12 +15,17 @@ const mutations = { //触发状态 同步
     jian(state) {
         state.size--;
     },
+    // 显示/隐藏
+    showsd(state){
+        state.testshow = !state.testshow;
+    },
+
 }
 
 const getters = {  //计算属性
     sizes: function(state) {
         return state.sizes + 1000;
-    }
+    },
 }
 
 //action 异步 批处理触发
@@ -33,6 +39,10 @@ const actions = {
     jianplus({commit}){
         commit('jian')
     },
+
+    showsd({commit}){
+        commit('showsd');
+    }
 }
 
 export default new Vuex.Store({

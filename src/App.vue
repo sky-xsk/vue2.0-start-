@@ -108,12 +108,19 @@
         </p>
 
           <p>
-            <button @click="jiaplus">+plus</button> 
+            <button @click="jiaplus">+plus</button>
             <button @click="jianplus">-plus</button>
          </p>
        <hr />  
 
 
+    <button @click="showsd()">试试用vuex处理显示隐藏</button>
+
+    <transition enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+          <div class="showToggle animated" v-show="testshow">试试用vuex处理显示隐藏</div>  
+    </transition>
+
+<hr /> 
      <p>此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
         这个组件我并没有在components里注册；
      </p>  
@@ -124,11 +131,15 @@
      <hr />
 
      <h2>$parent</h2>
-     <button @click="parents()">点击我$parent</button>
+         <button @click="parents()">点击我$parent</button>
      <parent></parent>
 
-    
+    <hr />
+         <markdown></markdown>     
+    <hr />
 
+     
+   
 
   </div>
 </template>
@@ -142,6 +153,7 @@
     import jsonp from './components/jsonp.vue';
     import props from './components/props.vue';
     import parent from './components/parent.vue';
+    import markdown from './components/markdown.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -153,7 +165,9 @@
             bar,
             jsonp,
             props,
-            parent
+            parent,
+            markdown,
+
         },
        
         data() {
@@ -178,7 +192,8 @@
             //      return this.$store.state.sizes;
             // },
             //第二种方法,推荐此种方法
-            ...mapState(['sizes']),
+             ...mapState(['sizes']),
+             ...mapState(['testshow']),
           
             //第一种方法；
             // sizes(){
@@ -186,7 +201,6 @@
             // },
             //第二种方法,推荐此种方法
             ...mapGetters(['sizes']),//注意默认的值
-
         },
    
         mounted() {
@@ -210,7 +224,6 @@
 
         },
         methods: {
-           
             //
             parents(){
                 alert("parent")
@@ -220,6 +233,7 @@
             ...mapMutations(['jian','jia']), 
             //结合设置的数据，注意数字的变化
             ...mapActions(['jiaplus','jianplus']),
+            ...mapActions(['showsd']),
             //
              beforeEnter(el){
                 console.log('动画enter之前');
@@ -278,6 +292,8 @@
 </script>
 
 <style>
+      .showToggle{ width: 300px; height: 30px; background: #f60; color: #fff; 
+      line-height: 30px; margin-top: 10px;margin: 0 auto;}
        .diva{ width: 300px; height: 200px; background: seagreen};
 
         .fades-enter-active, .fades-leave-active{
