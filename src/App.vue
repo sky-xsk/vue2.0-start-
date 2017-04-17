@@ -114,13 +114,6 @@
        <hr />  
 
 
-    <button @click="showsd()">试试用vuex处理显示隐藏</button>
-
-    <transition enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
-          <div class="showToggle animated" v-show="testshow">试试用vuex处理显示隐藏</div>  
-    </transition>
-
-<hr /> 
      <p>此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
         这个组件我并没有在components里注册；
      </p>  
@@ -138,7 +131,18 @@
          <markdown></markdown>     
     <hr />
 
-     
+    <button @click="showsd()">试试用vuex处理显示隐藏</button>
+    <transition enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
+        <div class="showToggle animated" v-show="testshow">试试用vuex处理显示隐藏</div>  
+    </transition>
+
+    <hr /> 
+
+    <todolist></todolist>
+
+
+
+
    
 
   </div>
@@ -154,6 +158,9 @@
     import props from './components/props.vue';
     import parent from './components/parent.vue';
     import markdown from './components/markdown.vue';
+    import todolist from './components/todolist.vue';
+
+    
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -167,6 +174,7 @@
             props,
             parent,
             markdown,
+            todolist
 
         },
        
