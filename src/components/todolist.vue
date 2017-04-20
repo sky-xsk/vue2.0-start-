@@ -24,45 +24,42 @@
 
 <script>
     export default {
-        name: 'world',
-        components: {
-            
-        },
+        name: 'todo',
         data() {
             return {
-                todolist:[],
+                todolist:[], 
                 text:'',
                 state: false,
-                
             }
         },
         methods:{
+            //添加
             add(){
                 if(this.text == ''){
                     return 
                 }else{
-                        this.todolist.push ({
-                        value:this.text,
-                        state: false,
-                    })
-                }  
+                    this.todolist.push ({
+                    value:this.text,
+                    state: false,
+                })
+             }  
                 this.text='';
             },
-
+            //删除
             del(index){
                 this.todolist.splice(index,1);
             },
-
+            //删除选中
             remove(){
                 this.todolist = this.todolist.filter((index) => !index.state)
             },
+            //编辑
             edit(index){
-               
                 this.text = this.todolist[index].value;
-                 this.todolist.splice(index,1);
+                this.todolist.splice(index,1);
             }
         },
-
+        //计算属性
          computed: {
             select() {
                 return this.todolist.filter((index) => index.state == true)

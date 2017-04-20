@@ -114,7 +114,8 @@
        <hr />  
 
 
-     <p>此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
+     <p>
+        此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
         这个组件我并没有在components里注册；
      </p>  
 
@@ -137,14 +138,14 @@
     </transition>
 
     <hr /> 
-
+    
     <todolist></todolist>
 
+    <hr />
 
-
-
-   
-
+    <scripts></scripts>
+    <button  v-on:click="childs()">点击显示子组件的信息child</button>
+     
   </div>
 </template>
 
@@ -159,6 +160,7 @@
     import parent from './components/parent.vue';
     import markdown from './components/markdown.vue';
     import todolist from './components/todolist.vue';
+    import scripts from './components/scripts.vue';
 
     
     import Vue from 'vue';
@@ -174,7 +176,8 @@
             props,
             parent,
             markdown,
-            todolist
+            todolist,
+            scripts
 
         },
        
@@ -189,6 +192,7 @@
                 fu:'我是父组件的数据',
                 shows:false,
                 see:0,
+               
 
             }
         },
@@ -214,10 +218,6 @@
         mounted() {
             this.tests(); 
         },
-
-
-        
-
         //数据监测
         watch: {　　　　　　　　
             example0(curVal, oldVal) {　　　　
@@ -232,6 +232,14 @@
 
         },
         methods: {
+            //child
+            childs(){
+                for (var i = 0; i < this.$children.length; i++) {
+                    if(this.$children[i].msgs === 'child'){
+                        console.log(this.$children[i].msgs)
+                    }
+                 }
+            },
             //
             parents(){
                 alert("parent")
