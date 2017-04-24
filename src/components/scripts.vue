@@ -1,6 +1,7 @@
 <template>
   <div class="scripts">
         <p>子组件信息：{{msgs}}</p>	
+        <slot>如果没有分发内容，则显示slot中的内容</slot>
   </div>
 </template>
 

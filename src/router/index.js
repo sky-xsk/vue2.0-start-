@@ -9,8 +9,8 @@ import world from 'components/world'
 Vue.use(Router)
 
 export default new Router({
-    mode:"history",
-    scrollBehavior:()=>({y:0}),//组件从头开始滚动
+    mode: "history",
+    scrollBehavior: () => ({ y: 0 }), //组件从头开始滚动
     routes: [{
             path: '/',
             name: '/',
@@ -36,7 +36,7 @@ export default new Router({
         {
             path: '/user',
             children: [{
-                path: '/foo',
+                path: '/foo/:id',
                 name: 'foo',
                 component: foo
             }],

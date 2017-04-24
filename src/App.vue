@@ -143,7 +143,9 @@
 
     <hr />
 
-    <scripts></scripts>
+    <scripts>
+        <p>分发</p>
+    </scripts>
     <button  v-on:click="childs()">点击显示子组件的信息child</button>
      
   </div>

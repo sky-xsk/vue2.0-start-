@@ -3,8 +3,8 @@
     <p> user组件</p>
 
         <ul>
-            <p>此处是路由</p>
-            <li><router-link to="/foo">foo</router-link></li>
+            <p>此处是路由，仔细观察地址栏 </p>
+            <li v-for="item in routeData"><router-link :to="{name: 'foo', params: {id: item.id}}"><span>{{item.name}}</span></router-link></li>
         </ul>
         <transition name = 'fade'>
             <router-view></router-view>
@@ -19,7 +19,16 @@
         name: 'user',
         data() {
             return {
-
+             routeData: [{
+                    id: 1,
+                    name: '路由1',
+                },{
+                    id: 2,
+                    name: '路由2',
+                },{
+                    id: 3,
+                    name: '路由3',
+                }]
             }
         },
 
