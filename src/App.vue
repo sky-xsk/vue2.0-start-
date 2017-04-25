@@ -147,6 +147,11 @@
         <p>分发</p>
     </scripts>
     <button  v-on:click="childs()">点击显示子组件的信息child</button>
+
+     <hr />
+     <h2>用一下better-scroll插件</h2>
+
+     <betterScroll></betterScroll>
      
   </div>
 </template>
@@ -163,6 +168,7 @@
     import markdown from './components/markdown.vue';
     import todolist from './components/todolist.vue';
     import scripts from './components/scripts.vue';
+    import betterScroll from './components/betterScroll.vue';
 
     
     import Vue from 'vue';
@@ -179,7 +185,8 @@
             parent,
             markdown,
             todolist,
-            scripts
+            scripts,
+            betterScroll
 
         },
        
