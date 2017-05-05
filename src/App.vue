@@ -109,11 +109,33 @@
 
           <p>
             <button @click="jiaplus">+plus</button>
-            <button @click="jianplus">-plus</button>
+            <button @click="jianplus">-plus</button>  
          </p>
-       <hr />  
 
+        <hr />  
 
+        <hr />
+        <h2>再来弄一下，vuex</h2>
+        <h4>读出来数据</h4>    
+        <button type="button">计算属性1：{{$store.state.muconut}}</button>
+        <button>计算属性2：{{muconuts}}</button>   
+        <p>触发的动作按钮</p>
+        <button @click="active1()">触发按钮 {{muconuts}}</button>
+
+        <button @click="getBook()">异步获取数据,点击有惊喜！</button>
+        <div class="book">
+            <ul>
+                <li v-for="itemsd in novel">
+                    <p><span><img :src="itemsd.image"></span></p>
+                     <p><span>{{itemsd.id}}</span></p>
+                     <p><span>{{itemsd.title}}</span></p>
+                     <p><span>{{itemsd.rating.average}}</span></p>
+                </li>
+            </ul>
+        </p>
+      </div>
+
+  <hr />  
      <p>
         此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
         这个组件我并没有在components里注册；
@@ -126,6 +148,8 @@
 
      <h2>$parent</h2>
          <button @click="parents()">点击我$parent</button>
+         
+
      <parent></parent>
 
     <hr />
@@ -152,7 +176,8 @@
      <h2>用一下better-scroll插件</h2>
 
      <betterScroll></betterScroll>
-     
+
+
   </div>
 </template>
 
@@ -169,8 +194,6 @@
     import todolist from './components/todolist.vue';
     import scripts from './components/scripts.vue';
     import betterScroll from './components/betterScroll.vue';
-
-    
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -187,7 +210,6 @@
             todolist,
             scripts,
             betterScroll
-
         },
        
         data() {
@@ -202,7 +224,6 @@
                 shows:false,
                 see:0,
                
-
             }
         },
 
@@ -215,7 +236,12 @@
             //第二种方法,推荐此种方法
              ...mapState(['sizes']),
              ...mapState(['testshow']),
-          
+             ...mapState(['novel']),
+       
+             muconuts(){
+                 return this.$store.state.muconut;
+             },
+              
             //第一种方法；
             // sizes(){
             //     return this.$store.getters.sizes;
@@ -256,9 +282,12 @@
 
             //注意mapMutations的引入方式
             ...mapMutations(['jian','jia']), 
+            ...mapMutations(['active1']), 
+             ...mapMutations(['getBook']), 
             //结合设置的数据，注意数字的变化
             ...mapActions(['jiaplus','jianplus']),
             ...mapActions(['showsd']),
+            ...mapActions(['getBook']),
             //
              beforeEnter(el){
                 console.log('动画enter之前');
@@ -441,4 +470,6 @@
         margin-top: 300px;
         line-height: 30px;
     }
+    .book{ width: 100%; overflow: hidden;}
+    .book ul li{ list-style: none; float: left; margin-left: 100px;}
 </style>

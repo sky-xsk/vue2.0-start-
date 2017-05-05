@@ -6,6 +6,9 @@ const state = { //访问状态对象
     size: 100,
     sizes: 200,
     testshow: false,
+    muconut: 8000,
+    novel: [],
+
 }
 
 const mutations = { //触发状态 同步
@@ -19,6 +22,15 @@ const mutations = { //触发状态 同步
     showsd(state) {
         state.testshow = !state.testshow;
     },
+    //第二次
+    active1(state) {
+        state.muconut = 3000;
+    },
+
+    getBook(state, payload) {
+        state.novel = payload.res;
+        console.log(state.novel)
+    }
 
 }
 
@@ -42,6 +54,19 @@ const actions = {
 
     showsd({ commit }) {
         commit('showsd');
+    },
+
+    // 请求接口实例
+    getBook({ commit }) {
+        Vue.http.jsonp('https://api.douban.com/v2/book/search?q=虚构类&count=8')
+            .then(res => {
+                commit({
+                    type: 'getBook',
+                    tag: 'novel',
+                    res: res.body.books
+                })
+            })
+
     }
 }
 
