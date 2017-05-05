@@ -13,9 +13,18 @@
             <li><router-link to="/user">user</router-link></li>
         </ul>
 
+        <!--
+            <router-link>
+            1.设置 replace 属性的话，当点击时，会调用 router.replace() 而不是 router.push()，于是导航后不会留下 history 记录。
+            2.设置 append 属性后，则在当前（相对）路径前添加基路径。例如，我们从 /a 导航到一个相对路径 b，如果没有配置 append，则路径为 /b，如果配了，则为 /a/b。
+            3.有时候想要 <router-link> 渲染成某种标签，例如 <li>。 于是我们使用 tag prop 类指定何种标签，同样它还是会监听点击，触发导航。
+            4.exact,"是否激活" 默认类名的依据是 inclusive match （全包含匹配）。 举个栗子，如果当前的路径是 /a 开头的，那么 <router-link to="/a"> 也会被设置 CSS 类名。
+        -->
+
         <div class="pp">父组件待传的值{{total}}</div>
         <button class="btn">在此接受good组件的值：{{ll}}</button>
     </div>
+    <!--<router-view>有个name属性，如果 <router-view>设置了名称，则会渲染对应的路由配置中 components 下的相应组件。-->
     <router-view :total="total" v-on:message="recieveMessage" v-on:cz="czs"></router-view>
 
     <div class="teanistions">
@@ -113,29 +122,6 @@
          </p>
 
         <hr />  
-
-        <hr />
-        <h2>再来弄一下，vuex</h2>
-        <h4>读出来数据</h4>    
-        <button type="button">计算属性1：{{$store.state.muconut}}</button>
-        <button>计算属性2：{{muconuts}}</button>   
-        <p>触发的动作按钮</p>
-        <button @click="active1()">触发按钮 {{muconuts}}</button>
-
-        <button @click="getBook()">异步获取数据,点击有惊喜！</button>
-        <div class="book">
-            <ul>
-                <li v-for="itemsd in novel">
-                    <p><span><img :src="itemsd.image"></span></p>
-                     <p><span>{{itemsd.id}}</span></p>
-                     <p><span>{{itemsd.title}}</span></p>
-                     <p><span>{{itemsd.rating.average}}</span></p>
-                </li>
-            </ul>
-        </p>
-      </div>
-
-  <hr />  
      <p>
         此处开发的alerts组件，相当于一个插件的形式，就是说你直接在main.js中引用过之后，可在任意页面或组件中使用，和vue-resource的用法相同（公共组件），
         这个组件我并没有在components里注册；
@@ -167,18 +153,41 @@
 
     <hr />
 
-    <scripts>
+     <scripts>
         <p>分发</p>
     </scripts>
     <button  v-on:click="childs()">点击显示子组件的信息child</button>
 
      <hr />
      <h2>用一下better-scroll插件</h2>
-
      <betterScroll></betterScroll>
 
+      <hr />
+        <h2>再来弄一下，vuex</h2>
+        <h4>读出来数据</h4>    
+        <button type="button">计算属性1：{{$store.state.muconut}}</button>
+        <button>计算属性2：{{muconuts}}</button>   
+        <p>触发的动作按钮</p>
+        <button @click="active1()">触发按钮 {{muconuts}}</button>
 
-  </div>
+        <el-button type="danger" @click="getBook()">异步获取数据,点击有惊喜！</el-button>
+        <div class="book">
+            <ul>
+                <li v-for="itemsd in novel">
+                    <p><span><img :src="itemsd.image"></span></p>
+                     <p><span><b>编号：</b>{{itemsd.id}}</span></p>
+                     <p><span><b>名称：</b>{{itemsd.title}}</span></p>
+                     <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
+                </li>
+            </ul>
+        </p>
+      </div>
+  <hr />  
+
+  
+
+
+</div>
 </template>
 
 
@@ -471,5 +480,5 @@
         line-height: 30px;
     }
     .book{ width: 100%; overflow: hidden;}
-    .book ul li{ list-style: none; float: left; margin-left: 100px;}
+    .book ul li{ list-style: none; float: left; margin-left: 100px; height: 300px;}
 </style>
