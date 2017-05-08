@@ -188,9 +188,11 @@
     <p>如果满足条件则不被隐藏，反之被隐藏</p>
     <div v-if="Math.random() > 0.5"><b>现在没有被隐藏起来</b></div>
     <div v-else><b>现在被隐藏起来了</b></div>
-    
 
-
+   <hr />   
+  <h3>此处的值为传过去的值，不同的页面用的同一个组件，但是弹出的内容是不同的</h3> 
+  <alertip v-show="alertipShow" @closeTip="alertipShow = false" :alertText="alertText"></alertip> 
+  <el-button type="primary" @click="alerts()">点击此按钮，出现浮动窗口</el-button>
 
 </div>
 </template>
@@ -208,6 +210,7 @@
     import todolist from './components/todolist.vue';
     import scripts from './components/scripts.vue';
     import betterScroll from './components/betterScroll.vue';
+     import alertip from './components/alertip.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -223,7 +226,8 @@
             markdown,
             todolist,
             scripts,
-            betterScroll
+            betterScroll,
+            alertip
         },
        
         data() {
@@ -237,8 +241,8 @@
                 fu:'我是父组件的数据',
                 shows:false,
                 see:0,
-               
-               
+                alertipShow:false,
+                alertText:''
             }
         },
       
@@ -267,6 +271,9 @@
    
         mounted() {
             this.tests(); 
+
+
+
         },
         //数据监测
         watch: {　　　　　　　　
@@ -282,6 +289,11 @@
 
         },
         methods: {
+            //
+            alerts(){
+                this.alertText="此处的值为传过去的值，不同的页面用的同一个组件，但是弹出的内容是不同的！,这个信息在app组件里"
+                this.alertipShow = true;
+            },
             //child
             childs(){
                 for (var i = 0; i < this.$children.length; i++) {
