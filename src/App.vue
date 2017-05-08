@@ -25,7 +25,7 @@
         <button class="btn">在此接受good组件的值：{{ll}}</button>
     </div>
     <!--<router-view>有个name属性，如果 <router-view>设置了名称，则会渲染对应的路由配置中 components 下的相应组件。-->
-    <router-view :total="total" v-on:message="recieveMessage" v-on:cz="czs"></router-view>
+    <router-view :total="total" v-on:message="recieveMessage" v-on:cz="czs" ></router-view>
 
     <div class="teanistions">
        <button @click="shiw">点击我，你就会看到动态的效果</button>
@@ -135,7 +135,6 @@
      <h2>$parent</h2>
          <button @click="parents()">点击我$parent</button>
          
-
      <parent></parent>
 
     <hr />
@@ -163,7 +162,8 @@
      <betterScroll></betterScroll>
 
       <hr />
-        <h2>再来弄一下，vuex</h2>
+
+        <h2>来来，再来弄一下，vuex</h2>
         <h4>读出来数据</h4>    
         <button type="button">计算属性1：{{$store.state.muconut}}</button>
         <button>计算属性2：{{muconuts}}</button>   
@@ -184,7 +184,12 @@
       </div>
   <hr />  
 
-  
+    <h2>v-if.....v-else//此处和v-show有点类似</h2>
+    <p>如果满足条件则不被隐藏，反之被隐藏</p>
+    <div v-if="Math.random() > 0.5"><b>现在没有被隐藏起来</b></div>
+    <div v-else><b>现在被隐藏起来了</b></div>
+    
+
 
 
 </div>
@@ -233,9 +238,10 @@
                 shows:false,
                 see:0,
                
+               
             }
         },
-
+      
         computed:{
             //vuex
             //第一种方法；
