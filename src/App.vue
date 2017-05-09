@@ -194,6 +194,10 @@
   <alertip v-show="alertipShow" @closeTip="alertipShow = false" :alertText="alertText"></alertip> 
   <el-button type="primary" @click="alerts()">点击此按钮，出现浮动窗口</el-button>
 
+  <hr/>
+  <h3>点击切换文字</h3>
+ <el-button type="primary" @click="qie()">{{loginWay? "密码登陆":"短信登陆"}}</el-button>
+
 </div>
 </template>
 
@@ -242,7 +246,8 @@
                 shows:false,
                 see:0,
                 alertipShow:false,
-                alertText:''
+                alertText:'',
+                loginWay:true
             }
         },
       
@@ -290,6 +295,10 @@
         },
         methods: {
             //
+            qie(){
+               this.loginWay = !this.loginWay;
+            },
+            //
             alerts(){
                 this.alertText="此处的值为传过去的值，不同的页面用的同一个组件，但是弹出的内容是不同的！,这个信息在app组件里"
                 this.alertipShow = true;
@@ -307,6 +316,7 @@
                 alert("parent")
             },
 
+            
             //注意mapMutations的引入方式
             ...mapMutations(['jian','jia']), 
             ...mapMutations(['active1']), 
