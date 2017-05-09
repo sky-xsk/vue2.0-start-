@@ -198,10 +198,17 @@
   <h3>点击切换文字</h3>
  <el-button type="primary" @click="qie()">{{loginWay? "密码登陆":"短信登陆"}}</el-button>
 
+ <hr/>
+
+ <h3>上拉刷新，下拉加载</h3>
+    <refreseloading v-show="showLoading"></refreseloading>
+    <button type="primary" @click="showrefresh()"><a href="#">点击显示上拉刷新下拉加载,此处样式没有精修，只展示写法</a></button>
+
+
+
 </div>
+
 </template>
-
-
 <script>
     import good from './components/good.vue';
     import user from './components/user.vue';
@@ -214,7 +221,8 @@
     import todolist from './components/todolist.vue';
     import scripts from './components/scripts.vue';
     import betterScroll from './components/betterScroll.vue';
-     import alertip from './components/alertip.vue';
+    import alertip from './components/alertip.vue';
+    import refreseloading from './components/refreseloading.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -231,7 +239,9 @@
             todolist,
             scripts,
             betterScroll,
-            alertip
+            alertip,
+            refreseloading,
+            
         },
        
         data() {
@@ -247,7 +257,8 @@
                 see:0,
                 alertipShow:false,
                 alertText:'',
-                loginWay:true
+                loginWay:true,
+                showLoading:false
             }
         },
       
@@ -294,6 +305,10 @@
 
         },
         methods: {
+            //
+            showrefresh(){
+                this.showLoading=true;
+            },
             //
             qie(){
                this.loginWay = !this.loginWay;

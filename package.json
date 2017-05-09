@@ -12,6 +12,7 @@
     "element-ui": "^1.2.3",
     "vue": "^2.1.10",
     "vue-router": "^2.2.0",
+    "vue-scroller": "^2.2.0",
     "vuex": "^2.2.1"
   },
   "devDependencies": {
