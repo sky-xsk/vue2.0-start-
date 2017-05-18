@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  <h3>vue2.0 教程</h3>
     <good :total="total" v-on:message="recieveMessage"></good>
     
      <h4>看地址处有使用动态路由</h4>
@@ -204,7 +205,15 @@
     <refreseloading v-show="showLoading"></refreseloading>
     <button type="primary" @click="showrefresh()"><a href="#">点击显示上拉刷新下拉加载,此处样式没有精修，只展示写法</a></button>
 
-
+    <hr />
+    <h3>slot</h3>
+    <slots>
+        <!--这里的slot与组件里的name一一对应-->
+        <div slot="CPU">Intel Core i7</div>
+        <div slot="GPU">GTX980Ti</div>
+        <div slot="Memory">Kingston 32G</div>
+        <div slot="Hard-drive">Samsung SSD 1T</divt>
+    </slots>    
 
 </div>
 
@@ -223,6 +232,7 @@
     import betterScroll from './components/betterScroll.vue';
     import alertip from './components/alertip.vue';
     import refreseloading from './components/refreseloading.vue';
+    import slots from './components/slots.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -241,6 +251,7 @@
             betterScroll,
             alertip,
             refreseloading,
+            slots
             
         },
        
@@ -301,6 +312,11 @@
             $route(from,to){
                 console.log(from.path);
                 console.log(to.path);
+                if(to.path == '/world'){
+                    console.log('检测成功world')
+                }else if(from.path == '/Hello'){
+                    console.log('检测成功Hello')
+                }
             }
 
         },

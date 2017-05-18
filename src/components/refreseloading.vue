@@ -5,7 +5,7 @@
                 :on-infinite="infinite"
                 style="padding-top: 44px;">
         <div v-for="(item, index) in items" class="row" :class="{'grey-bg': index % 2 == 0}">
-        {{ item }}
+            {{ item }}
         </div>
     </scroller>
    

@@ -1,7 +1,7 @@
-# vue2.0 用法,入门好帮手
- vue2.0 用法,入门好帮手，进步快人一步！
-> A Vue.js project
+# test_xsk
 
+> A Vue.js project
+平时工作之余自己巩固的一些知识点，后期不断更新一些东西！
 ## Build Setup
 
 ``` bash
