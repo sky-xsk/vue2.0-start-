@@ -214,7 +214,11 @@
         <div slot="Memory">Kingston 32G</div>
         <div slot="Hard-drive">Samsung SSD 1T</divt>
     </slots>    
+<hr />
 
+<h3>再谈动画 A better tool for cubic-bezier() easing</h3>
+<transition1></transition1>
+<hr />
 </div>
 
 </template>
@@ -233,6 +237,7 @@
     import alertip from './components/alertip.vue';
     import refreseloading from './components/refreseloading.vue';
     import slots from './components/slots.vue';
+    import transition1 from './components/transition1.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -251,7 +256,8 @@
             betterScroll,
             alertip,
             refreseloading,
-            slots
+            slots,
+            transition1
             
         },
        
@@ -298,9 +304,6 @@
    
         mounted() {
             this.tests(); 
-
-
-
         },
         //数据监测
         watch: {　　　　　　　　

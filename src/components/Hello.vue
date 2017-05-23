@@ -3,8 +3,7 @@
      <p> hello组件 {{$route.params.id}}</p>
      <h3>从app组件里传过来的值{{total}}</h3>
      <el-button type="primary" @click="h_cz">hello的值{{msgs}}</el-button> 
-    
-     
+
   </div>
 </template>
 
