@@ -219,6 +219,10 @@
 <h3>再谈动画 A better tool for cubic-bezier() easing</h3>
 <transition1></transition1>
 <hr />
+
+<h2>自定义指令 directive</h2>    
+
+<directives></directives>
 </div>
 
 </template>
@@ -238,6 +242,7 @@
     import refreseloading from './components/refreseloading.vue';
     import slots from './components/slots.vue';
     import transition1 from './components/transition1.vue';
+    import directives from './components/directives.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -257,8 +262,8 @@
             alertip,
             refreseloading,
             slots,
-            transition1
-            
+            transition1,
+            directives 
         },
        
         data() {
