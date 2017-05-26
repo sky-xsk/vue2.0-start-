@@ -6,21 +6,55 @@
         <button @click="uninstall">卸载</button>
         <button @click="install">安装</button>
         <hr />
+
+        <div>
+           页面加载，焦点在输入框内：<input v-focus>
+        </div>
+      <hr />
+        <div id="hook-arguments-example" v-demo-directive:red="message"></div>
+    <hr />
+        <div id="hook-arguments-example1" v-demo-directiveq="{ color: 'white', text: 'hello!' }"></div>
   </div>
 </template>
 
 <script>
-    
     export default {
         components: {
             
         },
+        
         data() {
             return {
-                result:'hiww'
+                result:'hiww',
+                message:'hello'
             }
         },
         directives:{
+            demoDirectiveq:{
+                bind:function(el, binding, vnode){
+                    console.log(binding.value.color);
+                    console.log(binding.value.text);
+                }
+            },
+            demoDirective:{
+                bind: function(el, binding, vnode){
+                el.style.color = '#fff'
+                el.style.backgroundColor = binding.arg
+                el.innerHTML = 
+                    '指令名name - '       + binding.name + '<br>' +
+                    '指令绑定值value - '      + binding.value + '<br>' +
+                    '指令绑定表达式expression - ' + binding.expression + '<br>' +
+                    '传入指令的参数argument - '   + binding.arg + '<br>'
+                },
+            },
+            /////////
+            focus:{
+               // 当绑定元素插入到DOM中
+                inserted: function (el) {
+                // 聚焦元素
+                el.focus()
+                }
+            },
              dir:{
                  bind: function (el) {
                     console.log(el.parentNode)
