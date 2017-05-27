@@ -216,13 +216,12 @@
     </slots>    
 <hr />
 
-<h3>再谈动画 A better tool for cubic-bezier() easing</h3>
+<h3>再谈动画 A better tool for cubic-bezier() easing 可以实现动画的展现的速度曲线运动；网址：http://cubic-bezier.com</h3>
 <transition1></transition1>
 <hr />
 
-<h2>自定义指令 directive</h2>    
-
 <directives></directives>
+
 </div>
 
 </template>
@@ -274,7 +273,7 @@
                 toggle: false,
                 message: 'asdasdas',
                 example0: "",
-                fu:'我是父组件的数据',
+                fu:'我是父组件的数据', 
                 shows:false,
                 see:0,
                 alertipShow:false,
