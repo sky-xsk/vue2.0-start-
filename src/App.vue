@@ -175,7 +175,7 @@
         <div class="book">
             <ul>
                 <li v-for="itemsd in novel">
-                    <p><span><img :src="itemsd.image"></span></p>
+                     <p><span><img :src="itemsd.image"></span></p>
                      <p><span><b>编号：</b>{{itemsd.id}}</span></p>
                      <p><span><b>名称：</b>{{itemsd.title}}</span></p>
                      <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
@@ -183,7 +183,19 @@
             </ul>
         </p>
       </div>
-  <hr />  
+  <hr />
+     <!--获取数据的写法
+    <h3>vuex的形式写的数据交互</h3>
+   <el-button type="danger" @click="getuser()">异步获取数据,获取用户</el-button>
+        <ul style="max-height:300px; min-height:5px; overflow-y:auto">
+            <li v-for="its in user">
+                <p><span><b>id：</b>{{its.id}}</span></p>
+                <p><span><b>姓名</b>{{its.username}}</span></p>
+                <p><span><b>email：</b>{{its.email}}</span></p>
+            </li>
+        </ul>
+   -->
+  <hr />
 
     <h2>v-if.....v-else//此处和v-show有点类似</h2>
     <p>如果满足条件则不被隐藏，反之被隐藏</p>
@@ -293,6 +305,8 @@
              ...mapState(['sizes']),
              ...mapState(['testshow']),
              ...mapState(['novel']),
+             //获取数据的写法
+            // ...mapState(['user']),
        
              muconuts(){
                  return this.$store.state.muconut;
@@ -359,10 +373,14 @@
             ...mapMutations(['jian','jia']), 
             ...mapMutations(['active1']), 
              ...mapMutations(['getBook']), 
+              //获取数据的写法
+             //...mapMutations(['getuser']), 
             //结合设置的数据，注意数字的变化
             ...mapActions(['jiaplus','jianplus']),
             ...mapActions(['showsd']),
             ...mapActions(['getBook']),
+             //获取数据的写法
+            //...mapActions(['getuser']),
             //
              beforeEnter(el){
                 console.log('动画enter之前');

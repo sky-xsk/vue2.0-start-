@@ -11,7 +11,7 @@
            页面加载，焦点在输入框内：<input v-focus>
         </div>
       <hr />
-        <div id="hook-arguments-example" v-demo-directive:red="message"></div>
+        <div id="hook-arguments-example" v-demo-directive:white="message"></div>
     <hr />
         <div id="hook-arguments-example1" v-demo-directiveq="{ color: 'white', text: 'hello!' }"></div>
   </div>
@@ -38,7 +38,7 @@
             },
             demoDirective:{
                 bind: function(el, binding, vnode){
-                el.style.color = '#fff'
+                el.style.color = '#000'
                 el.style.backgroundColor = binding.arg
                 el.innerHTML = 
                     '指令名name - '       + binding.name + '<br>' +

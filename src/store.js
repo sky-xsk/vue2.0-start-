@@ -8,7 +8,8 @@ const state = { //访问状态对象
     testshow: false,
     muconut: 8000,
     novel: [],
-
+    //获取数据的写法
+    //user: []
 }
 
 const mutations = { //触发状态 同步
@@ -30,7 +31,12 @@ const mutations = { //触发状态 同步
     getBook(state, payload) {
         state.novel = payload.res;
         console.log(state.novel)
-    }
+    },
+    //获取数据的写法
+    // getuser(state, payload) {
+    //     state.user = payload.res;
+    //     console.log(payload.res)
+    // },
 
 }
 
@@ -66,8 +72,16 @@ const actions = {
                     res: res.body.books
                 })
             })
-
-    }
+    },
+    //获取数据的写法
+    // getuser({ commit }) {
+    //     Vue.http.get('http://172.10.0.201/api/v1/accounts').then(res => {
+    //         commit({
+    //             type: 'getuser',
+    //             res: res.body.datas
+    //         })
+    //     })
+    // }
 }
 
 export default new Vuex.Store({
