@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <h3>vue2.0 教程</h3>
+  <h3>vue2.0 教程/仔细研究完，你可以做项目了！</h3>
     <good :total="total" v-on:message="recieveMessage"></good>
     
      <h4>看地址处有使用动态路由</h4>
