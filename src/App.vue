@@ -234,6 +234,14 @@
 
 <directives></directives>
 
+<hr />
+
+<p>数据可视化</p>
+<echarts></echarts>
+
+<hr />
+
+
 </div>
 
 </template>
@@ -254,6 +262,7 @@
     import slots from './components/slots.vue';
     import transition1 from './components/transition1.vue';
     import directives from './components/directives.vue';
+    import echarts from './components/echarts.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -274,7 +283,8 @@
             refreseloading,
             slots,
             transition1,
-            directives 
+            directives,
+            echarts 
         },
        
         data() {
