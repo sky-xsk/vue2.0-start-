@@ -1,6 +1,8 @@
 import Hello from 'components/Hello'
 import Router from 'vue-router'
 import Vue from 'vue'
+import apidetail from 'components/apidetail'
+import apitest from 'components/apitest'
 import foo from 'components/foo'
 import good from 'components/good'
 import user from 'components/user'
@@ -10,7 +12,7 @@ Vue.use(Router)
 
 export default new Router({
     mode: "history",
-    scrollBehavior: () => ({ y: 0 }), //组件从头开始滚动
+    //scrollBehavior: () => ({ y: 0 }), //组件从头开始滚动
     routes: [{
             path: '/',
             name: '/',
@@ -42,7 +44,11 @@ export default new Router({
             }],
             name: 'user',
             component: user
-        },
+        }, {
+            path: '/apidetail/:id',
+            name: 'apidetail',
+            component: apidetail
+        }
 
     ],
 })

@@ -164,25 +164,25 @@
 
       <hr />
 
-        <h2>来来，再来弄一下，vuex</h2>
-        <h4>读出来数据</h4>    
-        <button type="button">计算属性1：{{$store.state.muconut}}</button>
-        <button>计算属性2：{{muconuts}}</button>   
-        <p>触发的动作按钮</p>
-        <button @click="active1()">触发按钮 {{muconuts}}</button>
+    <h2>来来，再来弄一下，vuex</h2>
+    <h4>读出来数据</h4>    
+    <button type="button">计算属性1：{{$store.state.muconut}}</button>
+    <button>计算属性2：{{muconuts}}</button>   
+    <p>触发的动作按钮</p>
+    <button @click="active1()">触发按钮 {{muconuts}}</button>
 
-        <el-button type="danger" @click="getBook()">异步获取数据,点击有惊喜！</el-button>
-        <div class="book">
-            <ul>
-                <li v-for="itemsd in novel">
-                     <p><span><img :src="itemsd.image"></span></p>
-                     <p><span><b>编号：</b>{{itemsd.id}}</span></p>
-                     <p><span><b>名称：</b>{{itemsd.title}}</span></p>
-                     <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
-                </li>
-            </ul>
-        </p>
-      </div>
+    <el-button type="danger" @click="getBook()">异步获取数据,点击有惊喜！</el-button>
+    <div class="book">
+        <ul>
+            <li v-for="itemsd in novel">
+                    <p><span><img :src="itemsd.image"></span></p>
+                    <p><span><b>编号：</b>{{itemsd.id}}</span></p>
+                    <p><span><b>名称：</b>{{itemsd.title}}</span></p>
+                    <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
+            </li>
+        </ul>
+    </p>
+</div>
   <hr />
      <!--获取数据的写法
     <h3>vuex的形式写的数据交互</h3>
@@ -242,6 +242,9 @@
 <hr />
 
 
+
+
+
 </div>
 
 </template>
@@ -263,6 +266,8 @@
     import transition1 from './components/transition1.vue';
     import directives from './components/directives.vue';
     import echarts from './components/echarts.vue';
+    import apitest from './components/apitest.vue';
+    import apidetail from './components/apidetail.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -284,7 +289,9 @@
             slots,
             transition1,
             directives,
-            echarts 
+            echarts,
+            apitest,
+            apidetail,
         },
        
         data() {
@@ -301,10 +308,16 @@
                 alertipShow:false,
                 alertText:'',
                 loginWay:true,
-                showLoading:false
+                showLoading:false,
+
             }
         },
-      
+        
+        created(){
+
+          
+        },
+
         computed:{
             //vuex
             //第一种方法；
@@ -352,6 +365,8 @@
 
         },
         methods: {
+            //
+          
             //
             showrefresh(){
                 this.showLoading=true;
@@ -413,7 +428,7 @@
                 el.style.background='red';
             },
         
-            //
+            //传值
             get(msg){
                 this.fu = msg;
             },
@@ -449,6 +464,8 @@
 </script>
 
 <style>
+      .li{float: left; border: 1px solid #ccc; width: 140px;   margin:1px; cursor: pointer;}
+      .titlt{ height: 24px; }
       .showToggle{ width: 300px; height: 30px; background: #f60; color: #fff; 
       line-height: 30px; margin-top: 10px;margin: 0 auto;}
        .diva{ width: 300px; height: 200px; background: seagreen};

@@ -25,7 +25,7 @@ import echarts from 'echarts';
                     name: 'C'  
                 }, {  
                     value: 28,  
-                    name: 'D'  
+                    name: 'D' 
                 }, {  
                     value: 21,  
                     name: 'E'  
@@ -37,11 +37,10 @@ import echarts from 'echarts';
             drawGraph(id) {  
                 // 绘图方法  
                 this.chart = echarts.init(document.getElementById(id))  
-                    // 皮肤添加同一般使用方式  
-                this.chart.showLoading();  
+                this.chart.showLoading();   
                     // 返回到data中  
                 var that = this  
-                // ajax 请求数据  
+                // ajax 请求数据，可以自行模拟数据进行测试  
                 // $.ajax({  
                 //         // 方式  
                 //         type: "GET",  
