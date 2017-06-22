@@ -217,8 +217,8 @@
     <refreseloading v-show="showLoading"></refreseloading>
     <button type="primary" @click="showrefresh()"><a href="#">点击显示上拉刷新下拉加载,此处样式没有精修，只展示写法</a></button>
 
-    <hr />
-    <h3>slot</h3>
+ <hr />
+ <h3>slot</h3>
     <slots>
         <!--这里的slot与组件里的name一一对应-->
         <div slot="CPU">Intel Core i7</div>
@@ -230,8 +230,8 @@
 
 <h3>再谈动画 A better tool for cubic-bezier() easing 可以实现动画的展现的速度曲线运动；网址：http://cubic-bezier.com</h3>
 <transition1></transition1>
-<hr />
 
+<hr />
 <directives></directives>
 
 <hr />
@@ -240,8 +240,11 @@
 <echarts></echarts>
 
 <hr />
-
-
+<!--
+ //内置组件
+<component :is="componentId"></component>
+<keep-alive></keep-alive>
+-->
 
 
 
@@ -395,8 +398,8 @@
 
             
             //注意mapMutations的引入方式
-            ...mapMutations(['jian','jia']), 
-            ...mapMutations(['active1']), 
+             ...mapMutations(['jian','jia']), 
+             ...mapMutations(['active1']), 
              ...mapMutations(['getBook']), 
               //获取数据的写法
              //...mapMutations(['getuser']), 
@@ -463,133 +466,34 @@
     }
 </script>
 
-<style>
-      .li{float: left; border: 1px solid #ccc; width: 140px;   margin:1px; cursor: pointer;}
-      .titlt{ height: 24px; }
-      .showToggle{ width: 300px; height: 30px; background: #f60; color: #fff; 
-      line-height: 30px; margin-top: 10px;margin: 0 auto;}
-       .diva{ width: 300px; height: 200px; background: seagreen};
-
-        .fades-enter-active, .fades-leave-active{
-            transition: 1s all ease;
-        }
-
-      .fades-enter-active{
-            opacity:1; 
-            transform: translate3d(0,0 ,0);
-          
-        }
-        .fades-leave-active{
-            opacity:0;
-             transform: translate3d(100px,0,0);
-        }
-         .fades-leave{
-            opacity:0;
-            transform: translate3d(100px,0 ,0);
-           
-        }
-        .fades-enter{
-            opacity:0;
-            transform: translate3d(0,0,0);
-        }
-
-    .tests {
-        width: 100%;
-        margin-top: 300px;
-    }
-    
-    .tests ul li {
-        height: 30px;
-    }
-    
-    .sd {
-        margin-top: 100px;
-    }
-    
-    .cont {
-        margin-top: 50px;
-    }
-    
-    .cont>ul {
-        display: flex;
-    }
-    
-    .cont > ul > li {
-        float: left;
-        flex: 1;
-        list-style: none;
-    }
-    
-    .example {
-        width: 100%;
-        height: 300px;
-        border: 1px solid #999;
-        margin-top: 300px;
-    }
-    
-    .btn {
-        margin-top: 20px;
-    }
-    
-    .teanistions {
-        margin-top: 20px;
-    }
-    
-    .tran {
-        widows: 200px;
-        height: 50px;
-        background: #2c3e50;
-        margin-top: 10px;
-    }
-    
-    .fade-enter-active {
-        transition: all .8s ease;
-    }
-    
-    .fade-leave-active {
-        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
-    
-    .fade-enter,
-    .fade-leave-active {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
-    
-    .test {
-        width: 100%;
-        height: 48px;
-        background: #ccc;
-    }
-    
-    .test ul {
-        display: flex;
-    }
-    
-    .test ul li {
-        list-style: none;
-        float: left;
-        flex: 1;
-        line-height: 48px;
-        text-align: center;
-        cursor: pointer;
-    }
-    
-    .pp {
-        width: 100%;
-        height: 30px;
-        border: 1px solid #ccc;
-        margin-top: 300px;
-        line-height: 30px;
-    }
-    .book{ width: 100%; overflow: hidden;}
-    .book ul li{ list-style: none; float: left; margin-left: 100px; height: 300px;}
+<style scope>
+.li{float: left; border: 1px solid #ccc; width: 140px;   margin:1px; cursor: pointer;}
+.titlt{ height: 24px; }
+.showToggle{ width: 300px; height: 30px; background: #f60; color: #fff;  line-height: 30px; margin-top: 10px;margin: 0 auto;}
+.diva{ width: 300px; height: 200px; background: seagreen};
+.fades-enter-active, .fades-leave-active{transition: 1s all ease;}
+.fades-enter-active{opacity:1; transform: translate3d(0,0 ,0);}
+.fades-leave-active{opacity:0;transform: translate3d(100px,0,0);}
+.fades-leave{opacity:0;transform: translate3d(100px,0 ,0);}
+.fades-enter{opacity:0;transform: translate3d(0,0,0);}
+.tests {width: 100%;margin-top: 300px;}
+.tests ul li {height: 30px;}
+.sd {margin-top: 100px;}
+.cont {margin-top: 50px;}
+.cont>ul {display: flex;}
+.cont > ul > li {float: left;flex: 1;list-style: none;}
+.example {width: 100%;height: 300px;border: 1px solid #999;margin-top: 300px;}
+.btn {margin-top: 20px;}
+.teanistions {margin-top: 20px;}
+.tran {widows: 200px;height: 50px;background: #2c3e50;margin-top: 10px;}
+.fade-enter-active {transition: all .8s ease;}
+.fade-leave-active {transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);}
+.fade-enter, .fade-leave-active {transform: translateY(20px);opacity: 0;}
+#app {font-family: 'Avenir', Helvetica, Arial, sans-serif;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align: center;color: #2c3e50;}
+.test {width: 100%;height: 48px;background: #ccc;}
+.test ul {display: flex;}
+.test ul li {list-style: none;float: left;flex: 1;line-height: 48px;text-align: center;cursor: pointer;}
+.pp {width: 100%;height: 30px;border: 1px solid #ccc;margin-top: 300px;line-height: 30px;}
+.book{ width: 100%; overflow: hidden;}
+.book ul li{ list-style: none; float: left; margin-left: 100px; height: 300px;}
 </style>
