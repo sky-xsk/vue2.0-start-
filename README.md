@@ -1,10 +1,10 @@
-# test_xsk
+# vue2.0入门基础+高级实践
 
-> vue2.0入门基础，比较全面的
+> vue2.0入门基础，比较全面的，还有部分高级实践！
   这个项目是自己平时积累的一些小的知识点，将其汇总，方便查阅！<br />
   注意：没有进行版式的美化，因为主要是记录vue2.0的写法！<br />
   觉着有用的话，请给个star！<br />
-  我的博客：https://sky-xsk.github.io/;欢迎访问！
+  我的博客：https://sky-xsk.github.io
 ## Build Setup
 
 ``` bash
