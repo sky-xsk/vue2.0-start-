@@ -233,20 +233,27 @@
 
 <hr />
 <directives></directives>
-
-<hr />
-
-<p>数据可视化</p>
-<echarts></echarts>
-
-<hr />
 <!--
  //内置组件
 <component :is="componentId"></component>
 <keep-alive></keep-alive>
 -->
 
+<hr />
 
+<p>/////////////////////////////////////////////////////////////////////</p>
+<el-button type="primary" @click="aboutClick()">点击弹出，弹出框</el-button>
+<el-button type="primary" @click="echartClick()">点击弹出，弹出框，弹出图表</el-button>
+
+<dialogs :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
+    <p>利用同一个组件，dialogs，但是显示的内容是不同的，实现组件的高度复用</p>
+</dialogs>
+
+<dialogs :is-show="isShowEchartDialog" @on-close="closeDialog('isShowEchartDialog')">
+    <p>数据可视化</p>
+    <echarts></echarts>
+</dialogs>
+<p>/////////////////////////////////////////////////////////////////////</p>
 
 </div>
 
@@ -271,6 +278,7 @@
     import echarts from './components/echarts.vue';
     import apitest from './components/apitest.vue';
     import apidetail from './components/apidetail.vue';
+    import dialogs from './components/dialogs.vue';
     import Vue from 'vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -295,6 +303,7 @@
             echarts,
             apitest,
             apidetail,
+            dialogs
         },
        
         data() {
@@ -312,6 +321,8 @@
                 alertText:'',
                 loginWay:true,
                 showLoading:false,
+                isShowAboutDialog: false,
+                isShowEchartDialog: false,
 
             }
         },
@@ -368,9 +379,19 @@
 
         },
         methods: {
-            //
-          
-            //
+            //组件弹窗开始
+            aboutClick () {
+                this.isShowAboutDialog = true
+            },
+            closeDialog (attr) {
+                 this[attr] = false
+            },
+
+            echartClick(){
+                this.isShowEchartDialog = true;
+            },
+            //组件弹窗结束
+            
             showrefresh(){
                 this.showLoading=true;
             },
