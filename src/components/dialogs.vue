@@ -5,7 +5,7 @@
             <transition name="drop">
                 <div class="dialog-content"  v-if="isShow">
                     <p class="dialog-close" @click="closeMyself">x</p>
-                    <slot>empty</slot>
+                    <slot>empty</slot>  <!--如果没值显示empty，反之显示该有的值-->
                 </div>
             </transition>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <h3>vue2.0 教程/仔细研究完，你可以做项目了！</h3>
+    <h3>vue2.0 教程/仔细研究完，你可以做项目了！</h3>
     <good :total="total" v-on:message="recieveMessage"></good>
     
      <h4>看地址处有使用动态路由</h4>
@@ -134,7 +134,7 @@
      <hr />
 
      <h2>$parent</h2>
-         <button @click="parents()">点击我$parent</button>
+     <button @click="parents()">点击我$parent</button>
          
      <parent></parent>
 
@@ -181,8 +181,7 @@
                     <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
             </li>
         </ul>
-    </p>
-</div>
+    </div>
   <hr />
      <!--获取数据的写法
     <h3>vuex的形式写的数据交互</h3>
@@ -209,14 +208,13 @@
 
   <hr/>
   <h3>点击切换文字</h3>
- <el-button type="primary" @click="qie()">{{loginWay? "密码登陆":"短信登陆"}}</el-button>
+  <el-button type="primary" @click="qie()">{{loginWay? "密码登陆":"短信登陆"}}</el-button>
 
  <hr/>
 
  <h3>上拉刷新，下拉加载</h3>
     <refreseloading v-show="showLoading"></refreseloading>
     <button type="primary" @click="showrefresh()"><a href="#">点击显示上拉刷新下拉加载,此处样式没有精修，只展示写法</a></button>
-
  <hr />
  <h3>slot</h3>
     <slots>
@@ -226,11 +224,10 @@
         <div slot="Memory">Kingston 32G</div>
         <div slot="Hard-drive">Samsung SSD 1T</div>
     </slots>    
-<hr />
+
 
 <h3>再谈动画 A better tool for cubic-bezier() easing 可以实现动画的展现的速度曲线运动；网址：http://cubic-bezier.com</h3>
 <transition1></transition1>
-
 <hr />
 <directives></directives>
 <!--
@@ -238,8 +235,6 @@
 <component :is="componentId"></component>
 <keep-alive></keep-alive>
 -->
-
-<hr />
 
 <p>/////////////////////////////////////////////////////////////////////</p>
 <el-button type="primary" @click="aboutClick()">点击弹出，弹出框</el-button>
@@ -255,8 +250,14 @@
 </dialogs>
 <p>/////////////////////////////////////////////////////////////////////</p>
 
-</div>
+<hr />
+<h3>此处利用的vuex状态管理以及异步调用数据</h3>
+<p>此处用的本地接口，请注意,如果要看效果，请到stroe里修改自己的地址，以及修改相关配置</p>
+<el-button type="danger" @click="getalarm()">点击，查看控制台</el-button>
 
+<hr />
+
+</div>
 </template>
 <script>
     import good from './components/good.vue';
@@ -359,6 +360,7 @@
    
         mounted() {
             this.tests(); 
+            this.$store.dispatch('fetchAlarm')
         },
         //数据监测
         watch: {　　　　　　　　
@@ -379,6 +381,10 @@
 
         },
         methods: {
+            //
+            getalarm(){
+                console.log(this.$store.getters.getAlarms);
+            },
             //组件弹窗开始
             aboutClick () {
                 this.isShowAboutDialog = true

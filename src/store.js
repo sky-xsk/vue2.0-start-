@@ -16,6 +16,7 @@ const state = { //访问状态对象
     // orderList: [],
     // prama: {},
 
+    alarm: [],
 
 
 }
@@ -54,6 +55,12 @@ const mutations = { //触发状态 同步
     // updateParams(state, { key, val }) { //更新是在相应的方法里添加，this.$store.commit('updateParams',{key:,val:})
     //     state.params[key] = payload
     // }
+
+    updateAlarm(state, payload) {
+        state.alarm = payload
+    },
+
+
 }
 
 const getters = { //计算属性
@@ -62,6 +69,9 @@ const getters = { //计算属性
     },
     //////////////////
     // getOrderList: state => state.orderList, //将state里面的orderList赋值，值为getOrderList,页面访问的时候直接调用getOrderList
+
+    getAlarms: state => state.alarm,
+
 }
 
 //action 异步 批处理触发
@@ -78,6 +88,15 @@ const actions = {
     //     })
     // },
 
+
+    //此处用的本地接口，请注意
+    fetchAlarm({ commit, state }) {
+        Vue.http.get('http://172.10.0.201/api/v1/accounts').then((res) => {
+            commit('updateAlarm', res.body)
+        }, (err) => {
+            console.log('请求出错了')
+        })
+    },
 
     jiaplus(context) {
         context.commit('jia', { n: 500 });
