@@ -224,7 +224,7 @@
         <div slot="CPU">Intel Core i7</div>
         <div slot="GPU">GTX980Ti</div>
         <div slot="Memory">Kingston 32G</div>
-        <div slot="Hard-drive">Samsung SSD 1T</divt>
+        <div slot="Hard-drive">Samsung SSD 1T</div>
     </slots>    
 <hr />
 
