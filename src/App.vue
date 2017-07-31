@@ -62,7 +62,6 @@
 
     <!-- 只有修饰符 -->
     <form v-on:submit.prevent></form>
-    <form v-on:submit.prvevnt></form> 
 
     <!-- 添加事件侦听器时使用事件捕获模式 -->
     <div v-on:click.capture="doThis">...</div>
@@ -174,7 +173,7 @@
     <el-button type="danger" @click="getBook()">异步获取数据,点击有惊喜！</el-button>
     <div class="book">
         <ul>
-            <li v-for="itemsd in novel">
+            <li v-for="itemsd in novel" :key="itemsd">
                     <p><span><img :src="itemsd.image"></span></p>
                     <p><span><b>编号：</b>{{itemsd.id}}</span></p>
                     <p><span><b>名称：</b>{{itemsd.title}}</span></p>
@@ -257,6 +256,17 @@
 
 <hr />
 
+<el-button type="success" @click="lazyshowClick()">点击查看简单的图片懒加载效果</el-button>
+<div class="imgloading" v-show="lazyshow">
+    <ul>
+        <li v-for="img in list" :key="img"><img v-lazy="img"></li>
+    </ul>
+</div>
+
+
+
+
+
 </div>
 </template>
 <script>
@@ -324,7 +334,20 @@
                 showLoading:false,
                 isShowAboutDialog: false,
                 isShowEchartDialog: false,
-
+                list:[
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                    'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
+                ],
+                lazyshow:false
             }
         },
         
@@ -489,6 +512,10 @@
                     this.toggle = false
                 }
             },
+            //显示图片懒加载
+            lazyshowClick(){
+                this.lazyshow = true;
+            }
         },
     }
 </script>
@@ -523,4 +550,5 @@
 .pp {width: 100%;height: 30px;border: 1px solid #ccc;margin-top: 300px;line-height: 30px;}
 .book{ width: 100%; overflow: hidden;}
 .book ul li{ list-style: none; float: left; margin-left: 100px; height: 300px;}
+.imgloading ul li{ overflow: hidden;}
 </style>

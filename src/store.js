@@ -11,7 +11,6 @@ const state = { //访问状态对象
     //获取数据的写法
     //user: []
 
-
     //////////////////
     // orderList: [],
     // prama: {},
@@ -59,7 +58,6 @@ const mutations = { //触发状态 同步
     updateAlarm(state, payload) {
         state.alarm = payload
     },
-
 
 }
 
