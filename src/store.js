@@ -121,6 +121,8 @@ const actions = {
                 })
             })
     },
+
+    
     //获取数据的写法
     // getuser({ commit }) {
     //     Vue.http.get('http://172.10.0.201/api/v1/accounts').then(res => {

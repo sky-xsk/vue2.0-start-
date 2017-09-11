@@ -263,8 +263,10 @@
     </ul>
 </div>
 
-
-
+<hr />
+<h3>非父子组件的传值</h3>
+<cona></cona>
+<conb></conb>
 
 
 </div>
@@ -290,7 +292,10 @@
     import apitest from './components/apitest.vue';
     import apidetail from './components/apidetail.vue';
     import dialogs from './components/dialogs.vue';
+    import cona from './components/cona.vue';
+    import conb from './components/conb.vue';
     import Vue from 'vue';
+      import bus from './components/bus.js';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
         name: 'app',
@@ -314,7 +319,9 @@
             echarts,
             apitest,
             apidetail,
-            dialogs
+            dialogs,
+            cona,
+            conb
         },
        
         data() {
@@ -441,9 +448,10 @@
                     }
                  }
             },
+            
             //
             parents(){
-                alert("parent")
+                alert("parent");
             },
 
             
