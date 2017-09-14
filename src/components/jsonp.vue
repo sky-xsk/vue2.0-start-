@@ -4,7 +4,7 @@
         <h1>jsonp请求百度接口</h1>
         <input type="text" v-model="t1" @keyup="get($event)" placeholder="请输入您要搜索的关键词" class="input_s"  @keydown.down="changeDown()" @keydown.up.prevent="changeUp()">
         <ul class="ul_se">
-            <li v-for="(value,$index) in myData" :class="{gray:$index==now}" @click="clickChose($index)">
+            <li v-for="(value,$index) in myData" :class="{gray:$index==now}" @click="clickChose($index)" :key="value.number">
                 {{value}}
             </li>
         </ul>

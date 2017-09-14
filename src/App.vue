@@ -174,10 +174,10 @@
     <div class="book">
         <ul>
             <li v-for="itemsd in novel" :key="itemsd">
-                    <p><span><img :src="itemsd.image"></span></p>
-                    <p><span><b>编号：</b>{{itemsd.id}}</span></p>
-                    <p><span><b>名称：</b>{{itemsd.title}}</span></p>
-                    <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
+                <p><span><img :src="itemsd.image"></span></p>
+                <p><span><b>编号：</b>{{itemsd.id}}</span></p>
+                <p><span><b>名称：</b>{{itemsd.title}}</span></p>
+                <p><span><b>评分：</b>{{itemsd.rating.average}}</span></p>
             </li>
         </ul>
     </div>
@@ -268,6 +268,22 @@
 <cona></cona>
 <conb></conb>
 
+<hr />
+<h3>公用弹框，内容不同solt</h3>
+
+<el-button type="danger" @click="showDialodss">点击显示公共弹框111</el-button>
+<el-button type="success" @click="showDialodss1">点击显示公共弹框222</el-button>
+
+<dialogss v-show="isshowDialog" @closeDialogs="showClickss(isshowDialog)">
+    <p>solt的值，不同的内容，相同的组件111</p>
+</dialogss>
+
+<dialogss v-show="isshowDialog1" @closeDialogs="showClickss1(isshowDialog)">
+    <p>solt的值，不同的内容，相同的组件222</p>
+</dialogss>
+
+
+
 
 </div>
 </template>
@@ -295,7 +311,8 @@
     import cona from './components/cona.vue';
     import conb from './components/conb.vue';
     import Vue from 'vue';
-      import bus from './components/bus.js';
+    import bus from './components/bus.js';
+    import dialogss from './components/dialogss.vue';
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
         name: 'app',
@@ -321,7 +338,8 @@
             apidetail,
             dialogs,
             cona,
-            conb
+            conb,
+            dialogss
         },
        
         data() {
@@ -354,7 +372,9 @@
                     'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
                     'http://s15.sinaimg.cn/middle/4a30d769h8d0a5fb22f1e&690',
                 ],
-                lazyshow:false
+                lazyshow:false,
+                isshowDialog:false,
+                isshowDialog1:false,
             }
         },
         
@@ -368,7 +388,7 @@
             //第一种方法；
             // see(){
             //      return this.$store.state.sizes;
-            // },
+            //  },
             //第二种方法,推荐此种方法
              ...mapState(['sizes']),
              ...mapState(['testshow']),
@@ -411,6 +431,22 @@
 
         },
         methods: {
+            //showClickss
+            showDialodss(){
+                this.isshowDialog =true;
+            },
+
+             showDialodss1(){
+                this.isshowDialog1 =true;
+            },
+
+            showClickss(isshowDialog){
+                this.isshowDialog = false;
+            },
+
+             showClickss1(isshowDialog){
+                this.isshowDialog1 = false;
+            },
             //
             getalarm(){
                 console.log(this.$store.getters.getAlarms);

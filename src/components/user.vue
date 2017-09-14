@@ -4,7 +4,7 @@
 
         <ul>
             <p>此处是路由，仔细观察地址栏 </p>
-            <li v-for="item in routeData"><router-link :to="{name: 'foo', params: {id: item.id}}"><span>{{item.name}}</span></router-link></li>
+            <li v-for="item in routeData" :key="item.number"><router-link :to="{name: 'foo', params: {id: item.id}}"><span>{{item.name}}</span></router-link></li>
         </ul>
         <transition name = 'fade'>
             <router-view></router-view>
