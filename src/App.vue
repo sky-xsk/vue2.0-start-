@@ -282,7 +282,12 @@
     <p>solt的值，不同的内容，相同的组件222</p>
 </dialogss>
 
+<hr />
 
+<h3>计数组件</h3>
+<counter  :max="30" :min="20"></counter>
+
+<hr />
 
 
 </div>
@@ -310,6 +315,7 @@
     import dialogs from './components/dialogs.vue';
     import cona from './components/cona.vue';
     import conb from './components/conb.vue';
+    import counter from './components/counter.vue';
     import Vue from 'vue';
     import bus from './components/bus.js';
     import dialogss from './components/dialogss.vue';
@@ -339,7 +345,8 @@
             dialogs,
             cona,
             conb,
-            dialogss
+            dialogss,
+            counter
         },
        
         data() {
