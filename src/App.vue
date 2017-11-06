@@ -300,6 +300,10 @@
 
 <hr />
 
+<h3>导出电子表格</h3>
+<exportExcel></exportExcel>
+
+
 </div>
 </template>
 <script>
@@ -331,6 +335,7 @@
     import bus from './components/bus.js';
     import dialogss from './components/dialogss.vue';
     import tabletop from './components/tabletop.vue';
+    import exportExcel from './components/exportExcel.vue';
 
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
@@ -361,7 +366,8 @@
             dialogss,
             counter,
             vuexx,
-            tabletop
+            tabletop,
+            exportExcel
         },
        
         data() {
