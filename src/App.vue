@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+<div id="app">
     <h3>vue2.0 教程/仔细研究完，你可以做项目了！</h3>
     <good :total="total" v-on:message="recieveMessage"></good>
     
@@ -73,7 +73,7 @@
      <input v-on:keyup.enter="submit">
 
      <p>如果要控制多个按键直接可以看下面的写法</p>
-     <input v-on:keyup.enter.shift="submit">
+     <input v-on:keyup.enter.shift="submit" />
      
      <el-button type="primary">主要按钮</el-button>
 
@@ -224,7 +224,6 @@
         <div slot="Hard-drive">Samsung SSD 1T</div>
     </slots>    
 
-
 <h3>再谈动画 A better tool for cubic-bezier() easing 可以实现动画的展现的速度曲线运动；网址：http://cubic-bezier.com</h3>
 <transition1></transition1>
 <hr />
@@ -284,11 +283,22 @@
 
 <hr />
 
-<h3>计数组件</h3>
-<counter  :max="30" :min="20"></counter>
+<h3>计数组件ds</h3>
+
+<counter :max="30" :min="20"></counter>
 
 <hr />
 
+<h3>vuex</h3>
+
+<vuexx></vuexx>
+
+<hr />
+
+<h3>动态表格元素的显示与隐藏</h3>
+<tabletop></tabletop>
+
+<hr />
 
 </div>
 </template>
@@ -316,9 +326,12 @@
     import cona from './components/cona.vue';
     import conb from './components/conb.vue';
     import counter from './components/counter.vue';
+    import vuexx from './components/vuexx.vue';
     import Vue from 'vue';
     import bus from './components/bus.js';
     import dialogss from './components/dialogss.vue';
+    import tabletop from './components/tabletop.vue';
+
     import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
     export default {
         name: 'app',
@@ -346,7 +359,9 @@
             cona,
             conb,
             dialogss,
-            counter
+            counter,
+            vuexx,
+            tabletop
         },
        
         data() {

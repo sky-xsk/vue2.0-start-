@@ -1,5 +1,8 @@
+import * as types from 'type.js'
+
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 Vue.use(Vuex)
 
 const state = { //访问状态对象
@@ -10,17 +13,24 @@ const state = { //访问状态对象
     novel: [],
     //获取数据的写法
     //user: []
-
     //////////////////
     // orderList: [],
     // prama: {},
 
     alarm: [],
+    a:200,
 
 
 }
 
 const mutations = { //触发状态 同步
+    //add
+    vueadd(state){
+        state.a++;
+    },
+    
+
+
     jia(state, payload) { //载荷，说白了就是传的一个参数,payload是一个对象；
         state.size += payload.n;
     },
@@ -69,6 +79,13 @@ const getters = { //计算属性
     // getOrderList: state => state.orderList, //将state里面的orderList赋值，值为getOrderList,页面访问的时候直接调用getOrderList
 
     getAlarms: state => state.alarm,
+    
+    //
+    a:function(state){
+       return state.a+200;
+    },
+
+    
 
 }
 
@@ -86,10 +103,17 @@ const actions = {
     //     })
     // },
 
+    //异步
+    vueaddsaction({commit}){
+        setTimeout(()=>{
+            commit('vueadd');
+        },2000);
+    },
+
 
     //此处用的本地接口，请注意
     fetchAlarm({ commit, state }) {
-        Vue.http.get('http://172.10.0.201/api/v1/accounts').then((res) => {
+        Vue.http.get('http://192.168.1.190/api/v1/accounts').then((res) => {
             commit('updateAlarm', res.body)
         }, (err) => {
             console.log('请求出错了')

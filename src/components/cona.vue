@@ -5,6 +5,13 @@
 
     <input type="text" v-model="message">
     <button @click="send"> 发送 </button>
+
+
+    <p>{{$store.state.a}}</p>
+
+
+
+
   </div>
 
 </template>
