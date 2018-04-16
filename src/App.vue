@@ -152,9 +152,7 @@
 
     <hr />
 
-     <scripts>
-        <p>分发</p>
-    </scripts>
+   
     <button  v-on:click="childs()">点击显示子组件的信息child</button>
 
      <hr />
@@ -507,8 +505,8 @@
             //child
             childs(){
                 for (var i = 0; i < this.$children.length; i++) {
-                    if(this.$children[i].msgs === 'child'){
-                        console.log(this.$children[i].msgs)
+                    if(this.$children[i].timeAreas === 'timeAreas'){
+                        console.log(this.$children[i].timeAreas)
                     }
                  }
             },
